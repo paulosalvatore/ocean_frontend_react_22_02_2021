@@ -19,27 +19,27 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
-    renderSquare() {
-        return <Square value="X" onClick={ () => this.props.onClick() }/>;
+    renderSquare(index) {
+        return <Square value="" onClick={ () => this.props.onClick() }/>;
     }
 
     render() {
         return (
             <div>
                 <div className="board-row">
-                    { this.renderSquare() }
-                    { this.renderSquare() }
-                    { this.renderSquare() }
+                    { this.renderSquare(0) }
+                    { this.renderSquare(1) }
+                    { this.renderSquare(2) }
                 </div>
                 <div className="board-row">
-                    { this.renderSquare() }
-                    { this.renderSquare() }
-                    { this.renderSquare() }
+                    { this.renderSquare(3) }
+                    { this.renderSquare(4) }
+                    { this.renderSquare(5) }
                 </div>
                 <div className="board-row">
-                    { this.renderSquare() }
-                    { this.renderSquare() }
-                    { this.renderSquare() }
+                    { this.renderSquare(6) }
+                    { this.renderSquare(7) }
+                    { this.renderSquare(8) }
                 </div>
             </div>
         );
@@ -49,7 +49,6 @@ class Board extends React.Component {
 // Criação do componente Game
 class Game extends React.Component {
     handleClick() {
-        alert('square foi clicado!');
     }
 
     render() {
