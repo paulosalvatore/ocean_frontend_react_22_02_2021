@@ -2,23 +2,45 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+class Square extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            value: props.value
+        };
+    }
+
+    teste() {
+        this.setState({
+            value: 'X'
+        });
+    }
+
+    render() {
+        return <button className="square" onClick={ () => this.teste() }>
+            { this.state.value }
+        </button>;
+    }
+}
+
 function Board() {
     return (
         <div>
             <div className="board-row">
-                <button className="square">😎</button>
-                <button className="square">😎</button>
-                <button className="square">😎</button>
+                <Square value="X"/>
+                <Square value="O"/>
+                <Square/>
             </div>
             <div className="board-row">
-                <button className="square">😇</button>
-                <button className="square">😇</button>
-                <button className="square">😇</button>
+                <Square/>
+                <Square/>
+                <Square/>
             </div>
             <div className="board-row">
-                <button className="square">👿</button>
-                <button className="square">👿</button>
-                <button className="square">👿</button>
+                <Square/>
+                <Square/>
+                <Square/>
             </div>
         </div>
     );
