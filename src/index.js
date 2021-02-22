@@ -18,26 +18,32 @@ class Square extends React.Component {
     }
 }
 
-function Board(props) {
-    return (
-        <div>
-            <div className="board-row">
-                <Square value="X" onClick={ () => props.onClick() }/>
-                <Square value="O"/>
-                <Square/>
+class Board extends React.Component {
+    renderSquare() {
+        return <Square value="X" onClick={ () => this.props.onClick() }/>;
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="board-row">
+                    { this.renderSquare() }
+                    { this.renderSquare() }
+                    { this.renderSquare() }
+                </div>
+                <div className="board-row">
+                    { this.renderSquare() }
+                    { this.renderSquare() }
+                    { this.renderSquare() }
+                </div>
+                <div className="board-row">
+                    { this.renderSquare() }
+                    { this.renderSquare() }
+                    { this.renderSquare() }
+                </div>
             </div>
-            <div className="board-row">
-                <Square/>
-                <Square/>
-                <Square/>
-            </div>
-            <div className="board-row">
-                <Square/>
-                <Square/>
-                <Square/>
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 // Criação do componente Game
