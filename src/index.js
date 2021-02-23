@@ -51,6 +51,10 @@ class Game extends React.Component {
     handleClick(index) {
         const squares = this.state.squares;
 
+        if (squares[index]) {
+            return;
+        }
+
         let nextMove = this.state.nextMove;
 
         squares[index] = nextMove;
