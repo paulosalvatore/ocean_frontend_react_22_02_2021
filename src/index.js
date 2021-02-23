@@ -51,7 +51,7 @@ class Game extends React.Component {
     handleClick(index) {
         const squares = this.state.squares;
 
-        if (squares[index]) {
+        if (squares[index] || calculateWinner(squares)) {
             return;
         }
 
