@@ -72,6 +72,9 @@ class Game extends React.Component {
     }
 
     render() {
+        const squares = this.state.squares;
+        const hasWinner = calculateWinner(squares);
+
         return (
             <div className="game">
                 <div className="game-board">
@@ -79,7 +82,7 @@ class Game extends React.Component {
                 </div>
 
                 <div className="game-info">
-                    Info
+                    { hasWinner ? 'Alguém venceu!' : 'Jogo em andamento' }
                 </div>
             </div>
         );
@@ -92,3 +95,7 @@ ReactDOM.render(
     // Local em que esse elemento será renderizado
     document.getElementById('root')
 );
+
+function calculateWinner(squares) {
+    return true;
+}
