@@ -55,19 +55,13 @@ class Game extends React.Component {
             return;
         }
 
-        let nextMove = this.state.nextMove;
+        squares[index] = this.state.nextMove;
 
-        squares[index] = nextMove;
-
-        if (nextMove === 'X') {
-            nextMove = 'O';
-        } else {
-            nextMove = 'X';
-        }
+        const nextMove = this.state.nextMove === 'X' ? 'O' : 'X';
 
         this.setState({
-            squares: squares,
-            nextMove: nextMove
+            squares,
+            nextMove
         });
     }
 
