@@ -120,17 +120,19 @@ function calculateWinner(squares) {
         [2, 4, 6]
     ];
 
+    /*
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
-
         const a = line[0];
         const b = line[1];
         const c = line[2];
-
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
             return true;
         }
     }
 
     return false;
+    */
+
+    return lines.some(([a, b, c]) => squares[a] && squares[a] === squares[b] && squares[a] === squares[c]);
 }
