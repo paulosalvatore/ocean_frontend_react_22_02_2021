@@ -73,6 +73,9 @@ class Game extends React.Component {
 
         const winner = nextMove === 'X' ? 'O' : 'X';
 
+        const filledSquares = squares.filter(Boolean);
+        const draw = !hasWinner && squares.length === filledSquares.length;
+
         return (
             <div className="game">
                 <div className="game-board">
@@ -80,7 +83,10 @@ class Game extends React.Component {
                 </div>
 
                 <div className="game-info">
-                    { hasWinner ? winner + ' venceu!' : 'Próxima jogada: ' + nextMove }
+                    { !hasWinner && !draw ? 'Próxima jogada: ' + nextMove : '' }
+                    { hasWinner ? winner + ' venceu!' : '' }
+                    { draw ? 'Deu velha!!' : ''}<br/>
+                    <br/>
                 </div>
             </div>
         );
