@@ -2,25 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: this.props.value
-        };
-    }
-
-    render() {
-        return <button className="square" onClick={ this.props.onClick }>
-            { this.state.value }
-        </button>;
-    }
+function Square(props) {
+    return <button className="square" onClick={ props.onClick }>
+        { props.value }
+    </button>;
 }
 
 class Board extends React.Component {
     renderSquare(index) {
-        return <Square value="" onClick={ () => this.props.onClick() }/>;
+        return <Square value={ this.props.squares[index] } onClick={ () => this.props.onClick(index) }/>;
     }
 
     render() {
@@ -48,14 +38,40 @@ class Board extends React.Component {
 
 // Criação do componente Game
 class Game extends React.Component {
-    handleClick() {
+    constructor() {
+        super();
+
+        // Defino o estado inicial do Game
+        this.state = {
+            squares: Array(9).fill(null),
+            nextMove: 'X'
+        };
+    }
+
+    handleClick(index) {
+        const squares = this.state.squares;
+
+        let nextMove = this.state.nextMove;
+
+        squares[index] = nextMove;
+
+        if (nextMove === 'X') {
+            nextMove = 'O';
+        } else {
+            nextMove = 'X';
+        }
+
+        this.setState({
+            squares: squares,
+            nextMove: nextMove
+        });
     }
 
     render() {
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board onClick={ () => this.handleClick() }/>
+                    <Board squares={ this.state.squares } onClick={ (index) => this.handleClick(index) }/>
                 </div>
 
                 <div className="game-info">
